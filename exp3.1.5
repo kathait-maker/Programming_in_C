@@ -1,0 +1,25 @@
+WAP using ternary operator, the user should input the length and breadth of a rectangle, one has to find out which rectangle has the highest perimeter. The minimum number of rectangles should be three.
+
+#include <stdio.h>
+
+int main() {
+    int n = 3; // minimum number of rectangles
+    float length, breadth, perimeter;
+    float max_perimeter = 0;
+    int rect_num = 0;
+
+    for (int i = 1; i <= n; i++) {
+        printf("Enter length and breadth of rectangle %d: ", i);
+        scanf("%f %f", &length, &breadth);
+
+        perimeter = 2 * (length + breadth);
+
+        // Update max perimeter using ternary operator
+        max_perimeter = (perimeter > max_perimeter) ? perimeter : max_perimeter;
+        rect_num = (perimeter > max_perimeter) ? i : rect_num;
+    }
+
+    printf("The rectangle with the highest perimeter has perimeter = %.2f\n", max_perimeter);
+
+    return 0;
+}
