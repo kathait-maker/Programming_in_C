@@ -1,0 +1,30 @@
+// Declare variables within different code blocks (enclosed by curly braces) andtest their accessibility within and outside those blocks.
+
+#include <stdio.h>
+
+int main() {
+    int x = 10; // Declared in main block
+    printf("Outside inner block: x = %d\n", x);
+
+    {
+        int y = 20; // Declared inside inner block
+        printf("Inside inner block:\n");
+        printf("x = %d\n", x);  // Accessible (outer variable)
+        printf("y = %d\n", y);  // Accessible (local to this block)
+
+        {
+            int z = 30; // Declared in nested block
+            printf("\nInside nested block:\n");
+            printf("x = %d\n", x); // Accessible
+            printf("y = %d\n", y); // Accessible
+            printf("z = %d\n", z); // Accessible only here
+        }
+
+        // printf("z = %d\n", z); //  Error: z not accessible here
+    }
+
+    // printf("y = %d\n", y); //  Error: y not accessible outside its block
+    printf("\nBack in main block: x = %d\n", x);
+
+    return 0;
+}
