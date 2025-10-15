@@ -1,0 +1,38 @@
+WAP to take check if the triangle is valid or not. If the validity is established, do check if the triangle is isosceles, equilateral, right angle, or scalene. Take sides of the triangle as input from a user
+
+#include <stdio.h>
+
+int main() {
+    float a, b, c;
+
+    // Input sides of the triangle
+    printf("Enter the three sides of the triangle: ");
+    scanf("%f %f %f", &a, &b, &c);
+
+    // Check for triangle validity
+    if (a + b > c && a + c > b && b + c > a) {
+        printf("The triangle is valid.\n");
+
+        // Check for equilateral
+        if (a == b && b == c) {
+            printf("It is an equilateral triangle.\n");
+        }
+        // Check for isosceles
+        else if (a == b || b == c || a == c) {
+            printf("It is an isosceles triangle.\n");
+        }
+        // Check for right-angled triangle using Pythagoras theorem
+        if (fabs(a*a + b*b - c*c) < 1e-6 || fabs(a*a + c*c - b*b) < 1e-6 || fabs(b*b + c*c - a*a) < 1e-6) {
+            printf("It is also a right-angled triangle.\n");
+        }
+        // If not equilateral, isosceles, or right-angled, then it's scalene
+        if (a != b && b != c && a != c) {
+            printf("It is a scalene triangle.\n");
+        }
+
+    } else {
+        printf("The triangle is not valid.\n");
+    }
+
+    return 0;
+}
