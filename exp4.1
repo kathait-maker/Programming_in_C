@@ -1,0 +1,30 @@
+//Declare a global variable outside all functions and use it inside various function to understand its asseccibility
+#include <stdio.h>
+
+// Global variable declaration
+int count = 10;  
+
+// Function prototypes
+void display();
+void modify();
+
+int main() {
+    printf("Initial value of global variable count = %d\n", count);
+    
+    display();   // Access global variable
+    modify();    // Modify global variable
+    display();   // Check updated value
+
+    return 0;
+}
+
+void display() {
+    // Accessing global variable
+    printf("Value of count inside display() = %d\n", count);
+}
+
+void modify() {
+    // Modifying global variable
+    count = count + 5;
+    printf("Global variable count modified to = %d\n", count);
+}
