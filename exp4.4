@@ -1,0 +1,26 @@
+Declare a static local variable inside a function. Observe how its value persistsacross function calls.
+
+#include <stdio.h>
+
+void counter() {
+    static int count = 0;  // Static local variable
+    int normal = 0;        // Normal (auto) local variable
+
+    count++;
+    normal++;
+
+    printf("Static variable: %d\tNormal variable: %d\n", count, normal);
+}
+
+int main() {
+    printf("First call:\n");
+    counter();
+
+    printf("\nSecond call:\n");
+    counter();
+
+    printf("\nThird call:\n");
+    counter();
+
+    return 0;
+}
