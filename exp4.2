@@ -1,0 +1,26 @@
+//Declare a local variable inside a function and try to access it outside thefunction. Compare this with accessing the global variable from within thefunction
+
+#include <stdio.h>
+
+// Global variable
+int globalVar = 10;
+
+// Function with a local variable
+void display() {
+    int localVar = 20; // Local variable
+    printf("Inside function:\n");
+    printf("Global variable = %d\n", globalVar);
+    printf("Local variable = %d\n", localVar);
+}
+
+int main() {
+    display();
+    
+    printf("\nOutside function:\n");
+    printf("Global variable = %d\n", globalVar);
+    
+    // Trying to access localVar outside its function will cause an error
+    // printf("Local variable = %d\n", localVar);  
+
+    return 0;
+}
