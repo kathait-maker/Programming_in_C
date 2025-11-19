@@ -1,0 +1,35 @@
+Write a C program to compute the monthly pay of 100 employees using each employee‗s name, basic pay. The DA is computed as 52% of the basic pay. Gross-salary (basic pay + DA). Print the employees name and gross salary.
+
+#include <stdio.h>
+
+int main() {
+    char name[100][50];      // To store 100 employee names
+    float basic[100];        // To store basic pay
+    float da, gross;
+    int i;
+
+    printf("Enter the name and basic pay of 100 employees:\n");
+
+    for (i = 0; i < 100; i++) {
+        printf("\nEmployee %d\n", i + 1);
+
+        printf("Name: ");
+        scanf("%s", name[i]);     // Reads name (single word)
+
+        printf("Basic Pay: ");
+        scanf("%f", &basic[i]);
+    }
+
+    printf("\n---------------------------------------------\n");
+    printf("Employee Name\t\tGross Salary\n");
+    printf("---------------------------------------------\n");
+
+    for (i = 0; i < 100; i++) {
+        da = 0.52 * basic[i];          // 52% DA
+        gross = basic[i] + da;
+
+        printf("%-20s\t%.2f\n", name[i], gross);
+    }
+
+    return 0;
+}
