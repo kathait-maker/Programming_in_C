@@ -1,0 +1,67 @@
+Develop a recursive and non-recursive function FACT(num) to find the factorial of a number, n!, defined by FACT(n) = 1, if n = 0. Otherwise, FACT(n) = n * FACT(n-1). Using this function, write a C program to compute the binomial coefficient. Tabulate the results for different values of n and r with suitable messages.
+
+#include <stdio.h>
+
+// Recursive factorial function
+long FACT_recursive(int n) {
+    if (n == 0)
+        return 1;
+    else
+        return n * FACT_recursive(n - 1);
+}
+
+// Non-recursive factorial function
+long FACT_nonrecursive(int n) {
+    long fact = 1;
+    for (int i = 1; i <= n; i++)
+        fact *= i;
+    return fact;
+}
+
+// Function to compute binomial coefficient C(n, r)
+long binomial(int n, int r) {
+    long num = FACT_recursive(n);
+    long den = FACT_recursive(r) * FACT_recursive(n - r);
+    return num / den;
+}
+
+int main() {
+    int n, r;
+
+    printf("Enter value of n: ");
+    scanf("%d", &n);
+
+    printf("Enter value of r: ");
+    scanf("%d", &r);
+
+    // Validate n and r
+    if (r > n || n < 0 || r < 0) {
+        printf("\nInvalid values! r must be <= n and both should be >= 0.\n");
+        return 0;
+    }
+
+    // Compute factorials using both methods
+    long fact_n_rec = FACT_recursive(n);
+    long fact_r_rec = FACT_recursive(r);
+    long fact_nr_rec = FACT_recursive(n - r);
+
+    long fact_n_nonrec = FACT_nonrecursive(n);
+    long fact_r_nonrec = FACT_nonrecursive(r);
+    long fact_nr_nonrec = FACT_nonrecursive(n - r);
+
+    long C = binomial(n, r);
+
+    printf("\n----------------------------------------------\n");
+    printf("           FACTORIAL AND BINOMIAL TABLE       \n");
+    printf("----------------------------------------------\n");
+    printf("Value      Recursive      Non-Recursive\n");
+    printf("----------------------------------------------\n");
+    printf("n!         %10ld     %10ld\n", fact_n_rec, fact_n_nonrec);
+    printf("r!         %10ld     %10ld\n", fact_r_rec, fact_r_nonrec);
+    printf("(n-r)!     %10ld     %10ld\n", fact_nr_rec, fact_nr_nonrec);
+    printf("----------------------------------------------\n");
+
+    printf("\nBinomial Coefficient C(%d, %d) = %ld\n", n, r, C);
+
+    return 0;
+}
