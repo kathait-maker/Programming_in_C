@@ -1,0 +1,30 @@
+Write a function that accepts pointers as parameters. Pass variables by reference using pointers and modify their values within the function.
+
+#include <stdio.h>
+
+void modifyValues(int *x, float *y, char *z) {
+    *x = *x + 10;     // modify integer
+    *y = *y * 2;      // modify float
+    *z = 'A';         // modify char
+}
+
+int main() {
+    int a = 5;
+    float b = 3.5;
+    char c = 'X';
+
+    printf("Before function call:\n");
+    printf("a = %d\n", a);
+    printf("b = %.2f\n", b);
+    printf("c = %c\n\n", c);
+
+    // Pass by reference
+    modifyValues(&a, &b, &c);
+
+    printf("After function call:\n");
+    printf("a = %d\n", a);
+    printf("b = %.2f\n", b);
+    printf("c = %c\n", c);
+
+    return 0;
+}
